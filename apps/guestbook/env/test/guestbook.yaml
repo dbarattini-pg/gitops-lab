@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: test
+  source:
+    path: components/applications/guestbook/env/test
+    repoURL: https://github.com/dbarattini-pg/gitops-lab
+    targetRevision: test
